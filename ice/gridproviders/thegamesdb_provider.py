@@ -133,7 +133,11 @@ class GamesDBProvider(grid_image_provider.GridImageProvider):
             return None
         query=urllib.urlencode({'id':gameid})
         xml_url=urlparse.urlunparse(('http','thegamesdb.net','/api/GetArt.php','',query,''))
-        image_url=self.get_image_url(xml_url)
+        try:
+            image_url=self.get_image_url(xml_url)
+        except Exception:
+            logger.exception('Error parsing thegamesdb xml %s',xml_url)
+            return None
         logger.debug('Hash-based image found: %s %s',rom.path,image_url)
         if image_url is None or image_url == "":
             return None
