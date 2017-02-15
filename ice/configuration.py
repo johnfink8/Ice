@@ -41,7 +41,7 @@ UserdataDirectoryOption = ConfigOption(
 ProviderSpecOption = ConfigOption(
   identifier = "Images",
   key = "Providers",
-  default = "local, consolegrid",
+  default = "local, thegamesdb, consolegrid",
 )
 
 def get(store, option):
